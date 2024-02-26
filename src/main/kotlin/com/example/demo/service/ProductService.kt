@@ -1,10 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.response.ProductResponseDTO
+import com.example.demo.mapper.product.ProductResponseDTOMapper
+import com.example.demo.repository.ProductJpaRepository
 import org.springframework.stereotype.Service;
 
 @Service
- class ProductService(){
+ class ProductService(
+            val productJpaRepository: ProductJpaRepository,
+            val productResponseDTOMapper: ProductResponseDTOMapper
+         ){
 
      // TODO: Remove this after implementing repository
      fun createDummyProducts(): List<ProductResponseDTO> {
@@ -16,6 +21,6 @@ import org.springframework.stereotype.Service;
          return products
      }
    fun findAll() : List<ProductResponseDTO> {
-       return createDummyProducts()
+       return productJpaRepository.findAll().map(productResponseDTOMapper::map);
    }
  };
