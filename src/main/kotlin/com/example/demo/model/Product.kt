@@ -1,13 +1,14 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.databind.BeanDescription
+
 import jakarta.persistence.*;
 
+
 @Entity
-public class Product (
+class Product (
         @Id
         @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bp_seq")
-        @SequenceGenerator(name = "bp_seq", sequenceName = "sequence_bp")
+        @SequenceGenerator(name = "bp_seq", sequenceName = "sequence_bp", initialValue = 101)
         val id: Long?=null,
 
         val title: String,
@@ -15,6 +16,8 @@ public class Product (
         val description: String,
 
         val imageUrl: String,
+
+        val category: String,
 
         val price: Double
 ){}
