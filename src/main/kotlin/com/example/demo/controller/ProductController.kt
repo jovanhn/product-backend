@@ -56,4 +56,15 @@ class ProductController(val productService: ProductService) {
         return productService
                 .update(id, productRequestDTO)
     }
+
+    // TODO - temp solution, it should be exported to separate controller, service, dao, and repository
+    @GetMapping("/categories")
+    @ResponseStatus(HttpStatus.OK)
+    fun getAllCategories() : List<String>{
+        return listOf("smartphones","laptops","fragrances","skincare",
+                "groceries","home-decoration","furniture","tops",
+                "womens-dresses","womens-shoes","mens-shirts",
+                "mens-shoes","mens-watches","womens-watches","womens-bags",
+                "womens-jewellery","sunglasses","automotive","motorcycle","lighting")
+    }
 }
